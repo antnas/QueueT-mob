@@ -1,3 +1,2 @@
-<<<<<<< HEAD
 yippie
->>>>>>> mob/main
+pushed

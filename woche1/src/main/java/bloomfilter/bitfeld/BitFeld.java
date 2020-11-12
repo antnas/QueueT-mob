@@ -1,28 +1,27 @@
-package bitfeld;
+package bloomfilter.bitfeld;
 
 public class BitFeld implements I_Bitfeld {
-    int [] bitFeld = new int[65536];
-    public boolean vorhanden ;
+    private final boolean[] bitFeld;
 
+    public BitFeld(int n) {
+        bitFeld = new boolean[(int) Math.pow(256, n)];
+    }
 
     //sucht jeder Byte 0-255 = 256 bit
     //blommfilter 20 byte , 1 vorhanden , dann true
     // hashwerte = 20 byte von sha1
     @Override
     public void save(int[] hashwerte) {
-        vorhanden = false;
-        for(int i = 0 ; i < 20  ; i++) {
-            vorhanden = false;
-            if (bitFeld[hashwerte[i]] == 1) vorhanden = true;
-            bitFeld[hashwerte[i]] = 1;
+        for(int i = 0 ; i < hashwerte.length  ; i++) {
+            bitFeld[hashwerte[i]] = true;
         }
         //if(vorhanden) istVorhanden();
     }
 // sucht jeder byte in bitfeld
     @Override
     public boolean search(int[] hashWert) {
-        for(int i = 0 ; i<20 ; i++){
-            if(bitFeld[hashWert[i]] == 0){
+        for(int i = 0 ; i < hashWert.length; i++){
+            if(!bitFeld[hashWert[i]]){
                 System.out.println("Das Wort steht nicht im WörterBuch");
                 return false;
             }

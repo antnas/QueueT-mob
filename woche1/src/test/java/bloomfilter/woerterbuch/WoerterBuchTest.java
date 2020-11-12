@@ -1,4 +1,4 @@
-package woerterbuch;
+package bloomfilter.woerterbuch;
 
 public class WoerterBuchTest {
 }

@@ -1,4 +1,4 @@
-package bitfeld;
+package bloomfilter.bitfeld;
 
 public interface I_Bitfeld {
     void save(int[] hashwerte);

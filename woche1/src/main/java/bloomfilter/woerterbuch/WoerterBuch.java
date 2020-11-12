@@ -1,9 +1,9 @@
-package woerterbuch;
+package bloomfilter.woerterbuch;
 
-import bitfeld.BitFeld;
-import bitfeld.I_Bitfeld;
-import hashberechnung.HashBerechnung;
-import hashberechnung.I_Hashberechnung;
+import bloomfilter.bitfeld.BitFeld;
+import bloomfilter.bitfeld.I_Bitfeld;
+import bloomfilter.hashberechnung.HashBerechnung;
+import bloomfilter.hashberechnung.I_Hashberechnung;
 // hat die funktionalität
 public class WoerterBuch {
     private I_Bitfeld iBitfeld;
@@ -14,9 +14,9 @@ public class WoerterBuch {
         this.iHashberechnung = iHashberechnung;
     }
     //hilfe methode
-    public static WoerterBuch create(){
-        BitFeld bitfeld = new BitFeld();
-        HashBerechnung hashberechnung = new HashBerechnung();
+    public static WoerterBuch create(int n, int m){
+        BitFeld bitfeld = new BitFeld(n);
+        HashBerechnung hashberechnung = new HashBerechnung(n, m);
         return new WoerterBuch(bitfeld, hashberechnung);
     }
 

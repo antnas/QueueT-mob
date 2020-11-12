@@ -7,6 +7,10 @@ public class BitFeld implements I_Bitfeld {
         bitFeld = new boolean[(int) Math.pow(256, n)];
     }
 
+    // HALLO!
+
+    //Hallo von Garo
+
     //sucht jeder Byte 0-255 = 256 bit
     //blommfilter 20 byte , 1 vorhanden , dann true
     // hashwerte = 20 byte von sha1

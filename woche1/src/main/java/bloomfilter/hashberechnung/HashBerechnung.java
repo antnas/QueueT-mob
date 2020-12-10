@@ -3,8 +3,6 @@ package bloomfilter.hashberechnung;
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class HashBerechnung implements I_Hashberechnung {
-// nimmt das wort und rechnet ihr hashwert
-    // jeder byte von hashwert
 
     private final int n;
     private final int m;

@@ -5,12 +5,15 @@ import static java.time.Period.between;
 
 
 import java.time.LocalDate;
+
+import org.springframework.stereotype.Component;
 import tracker.excel.ExcelExporter;
 import tracker.mail.Mail;
 import tracker.mail.MailSender;
 import tracker.personen.Index;
 import tracker.personen.KontaktPerson;
 
+@Component
 public class Gesundheitsamt {
 
   private final MailSender mailsender;

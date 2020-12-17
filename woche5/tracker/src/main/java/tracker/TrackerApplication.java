@@ -54,7 +54,6 @@ public class TrackerApplication {
       // Phase 2 abschliessen, Phase 3 sollte dann automatisch getriggert werden
       tracker.trackingAbschliessen("Max Mustermann");
 
-
     };
   }
 

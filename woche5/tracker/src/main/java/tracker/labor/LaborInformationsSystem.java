@@ -2,8 +2,9 @@ package tracker.labor;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class LaborInformationsSystem {
 
   private List<TestErgebnis> ergebnisse = new ArrayList<>();

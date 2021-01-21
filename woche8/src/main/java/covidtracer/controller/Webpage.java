@@ -5,6 +5,7 @@ import covidtracer.kontaktliste.KontaktListe;
 import covidtracer.kontaktliste.Kontaktperson;
 import covidtracer.persistence.KontaktListeRepository;
 import covidtracer.service.KontaktListen;
+import covidtracer.stereotypes.Mutable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -25,9 +26,11 @@ import org.springframework.web.client.HttpClientErrorException;
 public class Webpage {
 
   @Autowired
+  @Mutable
   KontaktListen listen;
 
   @Autowired
+  @Mutable
   KontaktListeRepository repo;
 
   @GetMapping("/")

@@ -2,6 +2,7 @@ package covidtracer.kontaktliste;
 
 import covidtracer.stereotypes.AggregateRoot;
 import covidtracer.stereotypes.ClassOnly;
+import covidtracer.stereotypes.Mutable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,14 +15,12 @@ import org.springframework.data.annotation.Id;
 public class KontaktListe {
 
   @Id
-  private Long id = null;
-  private Index index = null;
-  private Set<Kontaktperson> kontakte = new HashSet<>();
-  private LocalDateTime changed;
+  @Mutable private Long id = null;
+  @Mutable private Index index = null;
+  private final Set<Kontaktperson> kontakte = new HashSet<>();
+  @Mutable private LocalDateTime changed;
 
-  private LocalDate created;
-
-
+  @Mutable private LocalDate created;
 
   public void addKontakt(Kontaktperson person) {
     kontakte.add(person);
@@ -32,7 +31,6 @@ public class KontaktListe {
   private void touch() {
     changed = LocalDateTime.now();
   }
-
 
   public Index getIndex() {
     return index;

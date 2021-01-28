@@ -7,6 +7,7 @@ import static java.util.stream.Collectors.groupingBy;
 import covidtracer.kontaktliste.KontaktListe;
 import covidtracer.persistence.KontaktListeRepository;
 import covidtracer.stereotypes.ClassOnly;
+import covidtracer.stereotypes.Mutable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.springframework.web.client.HttpClientErrorException;
 public class KontaktListen {
 
   @Autowired
+  @Mutable
   KontaktListeRepository repo;
 
   public SortedMap<Integer, Long> kontakteNachZeitpunktSortiert() {

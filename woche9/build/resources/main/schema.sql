@@ -1,0 +1,1 @@
+Create TABLE  IF  NOT EXISTS kraechz;

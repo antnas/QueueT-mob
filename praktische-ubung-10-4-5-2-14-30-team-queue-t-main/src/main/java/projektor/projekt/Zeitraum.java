@@ -1,13 +1,9 @@
 package projektor.projekt;
 
 import java.time.LocalDate;
-import org.springframework.data.annotation.Id;
 
 class Zeitraum {
 
-
-  @Id
-  private Long id;
   private final LocalDate von;
   private final LocalDate bis;
 
@@ -16,9 +12,6 @@ class Zeitraum {
     this.bis = bis;
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
   public LocalDate getVon() {
     return von;
   }

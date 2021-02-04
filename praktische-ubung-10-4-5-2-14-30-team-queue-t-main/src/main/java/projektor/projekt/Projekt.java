@@ -7,18 +7,14 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Embedded;
 import projektor.stereotypes.AggregateRoot;
 
 @AggregateRoot
 public class Projekt {
 
-  @Id
   private final Long id;
 
   private final String name;
-  @Embedded.Nullable
   private ProjektBeschreibung beschreibung;
 
   private Zeitraum zeitraum;

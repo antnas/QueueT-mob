@@ -1,0 +1,83 @@
+= Softwareentwicklung im Team: Praktische Übung 10
+:icons: font
+:icon-set: fa
+:experimental:
+:source-highlighter: rouge
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+:stem: latexmath
+endif::[]
+
+== Ziele der Übung
+
+In der Übung sollen Sie eine Datenbankanwendung entwickeln, die Spring Data JDBC benutzt.
+
+== Aufgabenstellung 
+
+Wir wollen eine Anwendung zur Verwaltung von Projekten schreiben.
+Ein Projekt hat einen Namen, eine Projektbeschreibung, einen Zeitraum und eine Liste von Beteiligten.
+
+Die Anwendung soll neue Projekte anlegen und bestehende Projekte ändern können.
+Außerdem wollen wir Listen von Projekten anzeigen und filtern.
+
+Verwenden Sie Spring Data JDBC, um die Daten aus der Datenbank zu lesen und zu speichern.
+Das zu speichernde Aggregat liegt im Package `projektor.projekt`, das Aggregat Root ist `Projekt`.
+Sie können Änderungen an Implementierungen vornehmen, die Klassenstruktur sollte im Wesentlichen aber erhalten bleiben.
+Sie sollten also nicht zum Beispiel die Projektbeschreibung inlinen, etc.
+
+IMPORTANT: Bei dieser Übung geht es um Spring Data JDBC.
+Der Code ist *kein Vorbild* für gute Implementierung!
+Es gibt keine Fehlerbehandlung, die Logik ist im Controller untergebracht, etc.
+
+In der Vorlage gibt es eine Klasse `ProjektRepository`, die die Benutzerschnittstelle mit Dummy-Daten befüllt, damit Sie sehen können, wie die Anwendung funktionieren soll.
+Es ist aber keine echte In-Memory Implementierung, zum Beispiel werden Eingaben ignoriert.
+
+Ihre Aufgaben sind:
+
+* Spring für die Verwendung der Datenbank konfigurieren. Die Datenbank soll die Daten lokal in einer Datei speichern. 
++
+TIP: In der praktischen Übung 7 haben wir dieselbe Datenbank verwendet.
+* ein Datenbankschema in der Datei `schema.sql` festlegen,
+dabei sollte eine der Entitäten des Aggregats in der Projekttabelle einbettet werden.
+Alle anderen Entitäten sollten als One-to-One bzw.
+One-to-Many Relationen erhalten bleiben.
++
+TIP: Die Wahl, welche Entität Sie einbetten hat einen Einfluss darauf, welche Queries Sie als derived Queries schreiben können.
+* die Datenbank mit einigen Werten über die `data.sql` Datei befüllen (*optional*)
+* das Programm fertigstellen, sodass die Datenbank benutzt wird.
+Verwenden Sie ein Spring Data Repository und wenn es möglich ist derived Queries (geht nicht immer!)
+
+Das Programm soll folgende Funktionen haben:
+
+* Alle Projekte in der Übersicht auflisten
+* Die Beschreibung und/oder Start bzw.
+Endzeitpunkte eines Projekts ändern.
+* Eine Person zu einem Projekt hinzufügen
+* Projekte anzeigen, die vollständig in einen Zeitraum fallen
+* Projekte anzeigen, die ein vorgegebenes Wort in der Beschreibung enthalten
+* Projekte anzeigen, an denen eine gegebene Person beteiligt ist
+
+== Ablauf der Übung
+
+. Schalten Sie *mindestens* das Mikrofon, aber besser auch die Kamera, ein
+. Am Anfang gibt es eine kurze Vorstellungsrunde
+. Es wird festgelegt, in welcher Reihenfolge die "Driver" Rolle übernommen wird
+. Die erste Person teilt Ihren Screen und übernimmt mithilfe von `mob` die Session
+. Es wird an der Problemstellung gemeinsam gearbeitet nach den Regeln des Mob Programmings
+. Nach ca. der Hälfte der Zeit gibt es ein Feedback durch die Tutorin oder den Tutor
+. Es wird weiter an der Problemstellung gearbeitet
+. ca. 10 Minuten vor Ende der Session bekommen Sie Ihre Abschlussbewertung
+
+NOTE: Diese praktische Übung wird für die Zulassung gewertet.
+Sie müssen vorbereitet sein und einen hinreichenden Beitrag leisten.
+
+== Verhaltensregeln
+
+Wir erwarten von Ihnen einen respektvollen Umgang miteinander.
+Es gilt grundsätzlich bei uns der https://berlincodeofconduct.org/de/[Berlin Code of Conduct].
+Die TutorInnen haben die Aufgabe, die Einhaltung der Regeln zu überwachen und können bei Verstößen gegen den Verhaltenskodex Personen aus der praktischen Übung entfernen.
+

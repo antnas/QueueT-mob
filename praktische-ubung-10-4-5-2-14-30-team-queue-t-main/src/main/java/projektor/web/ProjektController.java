@@ -8,30 +8,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import projektor.projekt.Projekt;
-import projektor.projekt.ProjektRepo;
 import projektor.projekt.ProjektRepository;
 
 @Controller
 public class ProjektController {
 
   @Autowired
-  ProjektRepo repo;
+  ProjektRepository repo;
 
   @GetMapping("/")
   public String index(Model model, String person, String startzeitpunkt, String endzeitpunkt) {
     if (person != null) {
-      model.addAttribute("projekte", repo.findAll());
+      model.addAttribute("projekte", repo.blahPerson(person));
     }
     else if(startzeitpunkt!=null && endzeitpunkt != null) {
       LocalDate von = LocalDate.parse(startzeitpunkt);
       LocalDate bis = LocalDate.parse(endzeitpunkt);
-      model.addAttribute("projekte", repo.findAll());
+      model.addAttribute("projekte", repo.blahZeit(von, bis));
     }
     else
-    model.addAttribute("projekte", repo.findAll());
+    model.addAttribute("projekte", repo.blah());
     return "liste";
   }
-/*
+
   @GetMapping("/details/{id}")
   public String details(Model model, @PathVariable long id) {
     Projekt blub = repo.blub(id);
@@ -59,5 +58,5 @@ public class ProjektController {
     return "redirect:/";
   }
 
-*/
+
 }

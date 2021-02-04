@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekte</title>
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${projekt.name}">Project X</h1>
+
+    <h2>Stammdaten ändern</h2>
+    <div class="row">
+
+
+        <form method="post" th:action="@{/edit/{id}(id = ${projekt.id})}">
+
+            <div class="form-row">
+                <div class="form-group col-auto">
+                    <label for="start">Startzeitpunkt</label>
+                    <input type="text" class="form-control"
+                           id="start"
+                           name="startzeitpunkt"
+                           th:value="${projekt.startZeitpunkt}"
+                           placeholder="YYYY-MM-DD">
+                </div>
+                <div class="form-group col-auto">
+                    <label for="ende">Endzeitpunkt</label>
+                    <input type="text" class="form-control"
+                           id="ende"
+                           name="endzeitpunkt"
+                           th:value="${projekt.endZeitpunkt}"
+                           placeholder="YYYY-MM-DD">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="desc">Projektbeschreibung</label>
+                <textarea class="form-control"
+                          id="desc"
+                          th:text="${projekt.beschreibung}"
+                          name="beschreibung"
+                          rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary mb-2" type="submit">Ändern</button>
+        </form>
+    </div>
+    <hr>
+    <h2>Person hinzufügen</h2>
+    <div class="row">
+        <form method="post" th:action="@{/addperson/{id}(id = ${projekt.id})}">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <label for="pname">Name</label>
+                    <input id="pname" type="text" name="person"></input>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">Hinzufügen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <ul class="list-group" th:remove="all-but-first">
+        <li class="list-group-item" th:each="person : ${projekt.beteiligte}" th:text="${person}">Peter</li>
+        <li class="list-group-item"><a href="#">Paul</a></li>
+        <li class="list-group-item"><a href="#">Mary</a></li>
+    </ul>
+
+</div>
+</body>
+</html>

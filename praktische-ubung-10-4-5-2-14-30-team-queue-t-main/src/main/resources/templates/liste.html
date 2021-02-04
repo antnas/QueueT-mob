@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          rel="stylesheet">
+    <title>Projekte</title>
+</head>
+<body>
+<div class="container">
+    <h1>Projekte</h1>
+
+    <h2>Filtern nach Zeit</h2>
+    <div class="row">
+        <form>
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <input id="start"
+                           class="form-control"
+                           type="text"
+                           name="startzeitpunkt"
+                           placeholder="YYYY-MM-YY"></input>
+                </div>
+                <div class="col-auto">
+                    <input id="ende"
+                           class="form-control"
+                           type="text"
+                           name="endzeitpunkt"
+                           placeholder="YYYY-MM-YY"></input>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">Filtern</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+
+    <h2>Filtern nach Person</h2>
+
+    <div class="row">
+        <form>
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <input id="pname" class="form-control" type="text" name="person"></input>
+                </div>
+                <div class="col-auto">
+                    <button type="submit"
+                            class="btn btn-primary mb-2">Filtern
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+
+    <ul class="list-group" th:remove="all-but-first">
+        <li class="list-group-item" th:each="projekt : ${projekte}">
+            <a href="#" th:href="@{/details/{id}(id = ${projekt.id})}" th:text="${projekt.name}">Projekt 1</a>
+        </li>
+        <li class="list-group-item"><a href="#">Projekt 2</a></li>
+        <li class="list-group-item"><a href="#">Projekt 3</a></li>
+        <li class="list-group-item"><a href="#">Projekt 4</a></li>
+        <li class="list-group-item"><a href="#">Projekt 5</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

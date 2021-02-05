@@ -7,17 +7,22 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import jdk.jfr.DataAmount;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
 import projektor.stereotypes.AggregateRoot;
 
 @AggregateRoot
+@Data
+@NoArgsConstructor
 public class Projekt {
 
   @Id
-  private final Long id;
+  private Long id;
 
-  private final String name;
+  private String name;
   @Embedded.Nullable
   private ProjektBeschreibung beschreibung;
 
@@ -30,8 +35,12 @@ public class Projekt {
     this.name = name;
   }
 
-  public String getBeschreibung() {
-    return beschreibung.getBeschreibung();
+  LocalDate getStartZeitpunkt(){
+    return zeitraum.getVon();
+  }
+
+  LocalDate getEndZeitpunkt(){
+    return zeitraum.getBis();
   }
 
   public void setBeschreibung(String beschreibung) {
@@ -39,20 +48,8 @@ public class Projekt {
     this.beschreibung = x;
   }
 
-  public LocalDate getStartZeitpunkt() {
-    return zeitraum.getVon();
-  }
-
-  public LocalDate getEndZeitpunkt() {
-    return zeitraum.getBis();
-  }
-
   public void setZeitraum(LocalDate von, LocalDate bis) {
     this.zeitraum = new Zeitraum(von, bis);
-  }
-
-  public String getName() {
-    return name;
   }
 
   public List<String> getBeteiligte() {

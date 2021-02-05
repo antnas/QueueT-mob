@@ -1,30 +1,22 @@
 package projektor.projekt;
 
 import java.time.LocalDate;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
-class Zeitraum {
-
+@Data
+@NoArgsConstructor
+public class Zeitraum {
 
   @Id
   private Long id;
-  private final LocalDate von;
-  private final LocalDate bis;
+  private LocalDate von;
+  private LocalDate bis;
 
   public Zeitraum(LocalDate von, LocalDate bis) {
     this.von = von;
     this.bis = bis;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-  public LocalDate getVon() {
-    return von;
-  }
-
-  public LocalDate getBis() {
-    return bis;
   }
 
   @Override

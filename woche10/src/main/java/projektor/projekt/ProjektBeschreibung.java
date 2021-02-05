@@ -1,7 +1,11 @@
 package projektor.projekt;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+@Data
+@NoArgsConstructor
 class ProjektBeschreibung {
 
   @Id

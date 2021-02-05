@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import projektor.projekt.Projekt;
 import projektor.projekt.ProjektRepo;
 import projektor.projekt.ProjektRepository;
+import projektor.projekt.Zeitraum;
 
 @Controller
 public class ProjektController {
@@ -20,25 +21,26 @@ public class ProjektController {
   @GetMapping("/")
   public String index(Model model, String person, String startzeitpunkt, String endzeitpunkt) {
     if (person != null) {
-      model.addAttribute("projekte", repo.findAll());
+      model.addAttribute("projekte", repo.findProjektByPerson(person));
     }
     else if(startzeitpunkt!=null && endzeitpunkt != null) {
       LocalDate von = LocalDate.parse(startzeitpunkt);
       LocalDate bis = LocalDate.parse(endzeitpunkt);
-      model.addAttribute("projekte", repo.findAll());
+      model.addAttribute("projekte", repo.findProjektByZeitraum_VonAndZeitraum_Bis(von, bis));
     }
     else
     model.addAttribute("projekte", repo.findAll());
     return "liste";
   }
-/*
+
   @GetMapping("/details/{id}")
   public String details(Model model, @PathVariable long id) {
-    Projekt blub = repo.blub(id);
+    Projekt blub = repo.findProjektById(id);
+    System.out.println(blub);
     model.addAttribute("projekt", blub);
     return "details";
   }
-
+/*
   @PostMapping("/edit/{id}")
   public String edit(@PathVariable long id, String beschreibung,
                      String startzeitpunkt, String endzeitpunkt) {

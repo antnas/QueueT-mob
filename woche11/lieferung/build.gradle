@@ -21,6 +21,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.springframework.amqp:spring-rabbit-test'
+    compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
 }
 
 test {

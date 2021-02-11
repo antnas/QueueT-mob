@@ -2,6 +2,7 @@ package lieferung;
 
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,9 @@ public class LieferungController {
     this.lieferungen = lieferungen;
   }
 
-  @PostMapping("/liefern")
-  public String liefern(Long id) {
+  @PostMapping("/liefern/{id}")
+  public String liefern(@PathVariable Long id) {
+    System.out.println("POST");
     Assert.notNull(id,"Id für die Lieferung muss vorhanden sein");
     lieferungen.anfrage(id);
     String text = "Lieferung für " + id + " ist in Arbeit";

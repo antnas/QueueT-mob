@@ -27,13 +27,13 @@ import org.springframework.context.annotation.Bean;
 @EnableAsync
 public class BestellungApplication {
 
-  static final String topicExchangeName = "spring-boot-exchange";
-
-  static final String queueName = "spring-boot";
-
   public static void main(String[] args) {
     SpringApplication.run(BestellungApplication.class, args);
   }
+
+  /*static final String topicExchangeName = "spring-boot-exchange";
+
+  static final String queueName = "spring-boot";
 
   @Bean
   Queue queue() {
@@ -58,7 +58,7 @@ public class BestellungApplication {
     container.setQueueNames(queueName);
     container.setMessageListener(listenerAdapter);
     return container;
-  }
+  }*/
 
 
 }

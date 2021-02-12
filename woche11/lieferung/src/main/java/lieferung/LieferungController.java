@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LieferungController {
 
-
-
   private final LieferungService lieferungen;
 
   public LieferungController(LieferungService lieferungen) {
